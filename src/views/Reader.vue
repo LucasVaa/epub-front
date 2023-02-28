@@ -647,6 +647,7 @@
             next() {
                 this.info.page++
                 this.book.nextPage()
+                console.log(this.locationCfi)
             },
             toggle() {
                 this.open = !this.open

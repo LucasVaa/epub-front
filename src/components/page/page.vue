@@ -11,12 +11,12 @@
                 <!-- <ui-list-item title="编辑器" to="/editor">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item> -->
-                <ui-list-item title="帮助" href="https://project.yunser.com/articles/ddfecb2002e511e9ad8de53d942e6191" target="_blank">
+                <!-- <ui-list-item title="帮助" href="https://project.yunser.com/articles/ddfecb2002e511e9ad8de53d942e6191" target="_blank">
                     <ui-icon slot="left" value="grade"/>
                 </ui-list-item>
                 <ui-list-item title="关于" href="https://project.yunser.com/products/c8b5618002e411e9ad8de53d942e6191" target="_blank">
                     <ui-icon slot="left" value="grade"/>
-                </ui-list-item>
+                </ui-list-item> -->
             </ui-list>
         </div>
         <slot></slot>
