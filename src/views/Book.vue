@@ -1,6 +1,33 @@
 <template>
   <my-page class="page-home" :title="title" :page="page">
     <div id="main">
+      <div class="empty-box">
+        <img src="/static/img/recent_book.svg" />
+        <div class="text">最近阅读</div>
+      </div>
+      <ul class="book-list">
+        <li class="item" v-for="book in resentBooks">
+          <router-link
+            class="link"
+            :to="'/books/' + book.id"
+            :title="book.name"
+          >
+            <!-- <a class="remove" href="#" @click.stop.prevent="download(book)">下载</a> -->
+            <img class="cover" :src="book.cover" v-if="book.cover" />
+            <div class="cover-text" v-if="!book.cover">没有封面</div>
+          </router-link>
+          <!-- <div class="name">{{ book.name }}</div> -->
+          <el-table-column show-overflow-tooltip>
+            <span class="over-content">{{ book.name }}</span>
+          </el-table-column>
+          <a class="remove" href="#" @click.stop.prevent="remove(book)">删除</a>
+          <!-- <div class="author">{{ book.author }}</div> -->
+        </li>
+      </ul>
+      <div class="empty-box">
+        <img src="/static/img/all_book.svg" />
+        <div class="text">书库</div>
+      </div>
       <ul class="book-list">
         <li class="item" v-for="book in books">
           <router-link
@@ -51,7 +78,7 @@ export default {
   data() {
     return {
       reader: null,
-      title: "epub 阅读器",
+      title: "云阅读",
       books: [
         {
           id: "1",
@@ -66,6 +93,7 @@ export default {
           content: "123"
         }
       ],
+      resentBooks: [],
       page: {
         menu: [
           {
@@ -80,13 +108,13 @@ export default {
             click: this.addLink,
             title: "添加云端书籍"
           },
-          {
-            type: "icon",
-            icon: "apps",
-            href: "https://app.yunser.com?utm_source=epub",
-            target: "_blank",
-            title: "应用"
-          }
+          // {
+          //   type: "icon",
+          //   icon: "apps",
+          //   href: "https://app.yunser.com?utm_source=epub",
+          //   target: "_blank",
+          //   title: "应用"
+          // }
         ]
       }
     };
@@ -106,7 +134,7 @@ export default {
         bookDb.getBooks(data => {
           console.log("获取所有书籍");
           console.log(data);
-          this.books = data;
+          this.resentBooks = data.slice(12, 20);
           this.$axios
             .get(this.GLOBAL.host + "/getResource", {
               params: {
@@ -122,6 +150,11 @@ export default {
               }
             });
           // 添加示例图书
+          bookDb.getBooks(data => {
+            console.log("获取所有书籍");
+            console.log(data);
+            this.books = data;
+          })
           let isInit = this.$storage.get("init", false);
           if (!isInit) {
             this.$storage.set("init", true);
@@ -157,11 +190,11 @@ export default {
               content: url
             },
             () => {
-              bookDb.getBooks(data => {
-                console.log("获取所有书籍");
-                this.books = data;
-                console.log(data);
-              });
+              // bookDb.getBooks(data => {
+              //   console.log("获取所有书籍");
+              //   this.books = data;
+              //   console.log(data);
+              // });
             }
           );
         });
@@ -303,18 +336,19 @@ export default {
 }
 .empty-box {
   width: 480px;
-  margin: 80px auto;
-  padding: 32px;
+  margin: 30px auto;
+  padding: 12px;
   text-align: center;
   background-color: #fff;
   box-shadow: 0 0.5px 1px 0 rgba(0, 0, 0, 0.12);
   img {
     margin-bottom: 16px;
     width: 100px;
-    animation: rotate 5s infinite linear;
+    // animation: rotate 5s infinite linear;
   }
   .text {
     color: #999;
+    font-size: 20px;
   }
 }
 .over-content {

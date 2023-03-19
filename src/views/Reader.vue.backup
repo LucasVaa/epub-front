@@ -111,7 +111,7 @@
     export default {
         data () {
             return {
-                title: 'epub 阅读器',
+                title: '云阅读',
                 info: {
                     page: 1,
                     totalPage: 10,

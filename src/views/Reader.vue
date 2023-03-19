@@ -416,7 +416,7 @@ export default {
   data() {
     return {
       reader: null,
-      title: "epub 阅读器",
+      title: "云阅读",
       info: {
         page: 1,
         totalPage: 10
@@ -559,6 +559,12 @@ export default {
             icon: "fullscreen",
             click: this.fullscreen,
             title: "全屏/取消全屏"
+          },
+          {
+            type: "icon",
+            icon: "arrow_back",
+            click: this.backTohome,
+            title: "返回"
           }
         ]
       }
@@ -701,6 +707,9 @@ export default {
         launchFullscreen(document.documentElement);
       }
       this.isFullScreen = !this.isFullScreen;
+    },
+    backTohome() {
+      this.$router.push("/");
     },
     themeStyle(theme) {
       return {
