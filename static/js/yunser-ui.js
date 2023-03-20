@@ -7684,8 +7684,8 @@
             (this.isPc = window.innerWidth > 1e3),
             this.isPc)
           ) {
-            var n = i.getItem("drawerVisible");
-            this.drawerVisible = "0" !== n;
+            // var n = i.getItem("drawerVisible");
+            this.drawerVisible = !1;
           } else this.drawerVisible = !1;
           this.embed && (this.drawerVisible = !1),
             (this.lintener = window.addEventListener("resize", function() {
@@ -7694,8 +7694,7 @@
                   (t.isPc = !1), (t.drawerVisible = !1);
                 else {
                   t.isPc = !0;
-                  var e = i.getItem("drawerVisible");
-                  t.drawerVisible = "0" !== e;
+                  this.drawerVisible = !1;
                 }
             }));
         },
@@ -7907,7 +7906,6 @@
           name: "ui-paper",
           props: {
             circle: { type: Boolean, default: !1 },
-            rounded: { type: Boolean, default: !0 },
             zDepth: { type: Number, default: 1 }
           },
           computed: {
@@ -7915,7 +7913,6 @@
               var t = [];
               return (
                 this.circle && t.push("ui-paper-circle"),
-                this.rounded && t.push("ui-paper-round"),
                 t.push("ui-paper-" + this.zDepth),
                 t
               );

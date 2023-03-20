@@ -1,6 +1,6 @@
 <template>
     <ui-page :title="title || page.title" :page="page" :backable="backable" ref="page">
-        <div slot="drawer" v-show="false">
+        <div v-show="false">
             <div class="header">
                 <img class="logo" src="/static/img/book.svg">
             </div>
