@@ -7706,17 +7706,17 @@
           itemClick: function(t) {
             t.click && t.click();
           },
-        //   toggleDrawer: function() {
-        //     this.embed ||
-        //       (this.drawerVisible
-        //         ? i.setItem("drawerVisible", "0")
-        //         : i.setItem("drawerVisible", "1"),
-        //       (this.drawerVisible = !this.drawerVisible),
-        //       (this.docked = !this.isPc));
-        //   },
-        //   hideDrawer: function() {
-        //     this.drawerVisible = !1;
-        //   },
+          //   toggleDrawer: function() {
+          //     this.embed ||
+          //       (this.drawerVisible
+          //         ? i.setItem("drawerVisible", "0")
+          //         : i.setItem("drawerVisible", "1"),
+          //       (this.drawerVisible = !this.drawerVisible),
+          //       (this.docked = !this.isPc));
+          //   },
+          //   hideDrawer: function() {
+          //     this.drawerVisible = !1;
+          //   },
           hideDrawerIfMobile: function() {
             this.isPc || (this.drawerVisible = !1);
           }
@@ -15449,21 +15449,6 @@
                                     slot: "left"
                                   })
                                 : t._e(),
-                              t._v(" "),
-                              t.backable
-                                ? t._e()
-                                : n("ui-icon-button", {
-                                    attrs: {
-                                      slot: "left",
-                                      icon: "menu"
-                                    },
-                                    on: {
-                                      click: function(e) {
-                                        return t.toggleDrawer();
-                                      }
-                                    },
-                                    slot: "left"
-                                  }),
                               t._v(" "),
                               t._l(t.page.menu, function(e) {
                                 return t.page.menu

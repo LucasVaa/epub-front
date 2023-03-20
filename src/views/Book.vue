@@ -20,7 +20,12 @@
           <el-table-column show-overflow-tooltip>
             <span class="over-content">{{ book.name }}</span>
           </el-table-column>
-          <a class="remove" href="#" @click.stop.prevent="remove(book)">删除</a>
+          <el-table-column show-overflow-tooltip>
+            <span class="progress">{{
+              Math.round(Math.random() * 100) + "%"
+            }}</span>
+          </el-table-column>
+          <!-- <a class="remove" href="#" @click.stop.prevent="remove(book)">删除</a> -->
           <!-- <div class="author">{{ book.author }}</div> -->
         </li>
       </ul>
@@ -43,7 +48,12 @@
           <el-table-column show-overflow-tooltip>
             <span class="over-content">{{ book.name }}</span>
           </el-table-column>
-          <a class="remove" href="#" @click.stop.prevent="remove(book)">删除</a>
+          <el-table-column show-overflow-tooltip>
+            <span class="progress">{{
+              Math.round(Math.random() * 100) + "%"
+            }}</span>
+          </el-table-column>
+          <!-- <a class="remove" href="#" @click.stop.prevent="remove(book)">删除</a> -->
           <!-- <div class="author">{{ book.author }}</div> -->
         </li>
       </ul>
@@ -107,7 +117,7 @@ export default {
             icon: "cloud_download",
             click: this.addLink,
             title: "添加云端书籍"
-          },
+          }
           // {
           //   type: "icon",
           //   icon: "apps",
@@ -154,7 +164,7 @@ export default {
             console.log("获取所有书籍");
             console.log(data);
             this.books = data;
-          })
+          });
           let isInit = this.$storage.get("init", false);
           if (!isInit) {
             this.$storage.set("init", true);
@@ -308,7 +318,7 @@ export default {
     display: block;
     height: 100%;
     // padding: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     color: inherit;
   }
   .name {
@@ -316,6 +326,7 @@ export default {
   }
   .cover {
     max-width: 100%;
+    max-height: 100%;
   }
   .cover-text {
     line-height: 196px;
@@ -353,10 +364,16 @@ export default {
 }
 .over-content {
   display: inline-block;
-  width: 140px;
+  width: 120px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  margin-top: 14px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.progress {
+  display: inline-block;
+  font-size: 0.2em;
+  color: silver;
 }
 </style>

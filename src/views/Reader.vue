@@ -60,41 +60,38 @@
               <td class="key">简介</td>
               <td class="value">{{ meta.description }}</td>
             </tr>
-            <tr class="item">
+            <!-- <tr class="item">
               <td class="key">方向</td>
               <td class="value">{{ meta.direction }}</td>
-            </tr>
-            <!--<tr class="item">-->
-            <!--<td class="key">identifier</td>-->
-            <!--<td class="value">{{ meta.identifier }}</td>-->
-            <!--</tr>-->
+            </tr> -->
             <tr class="item">
               <td class="key">语言</td>
               <td class="value">{{ meta.language | lang }}</td>
             </tr>
-            <tr class="item">
+            <!-- <tr class="item">
               <td class="key">布局</td>
               <td class="value">{{ meta.layout }}</td>
-            </tr>
-            <tr class="item">
+            </tr> -->
+            <!-- <tr class="item">
               <td class="key">修改时间</td>
               <td class="value">{{ meta.modified_date | time }}</td>
-            </tr>
-            <!--<tr class="item">-->
-            <!--<td class="key">orientation</td>-->
-            <!--<td class="value">{{ meta.orientation }}</td>-->
-            <!--</tr>-->
+            </tr> -->
             <tr class="item">
               <td class="key">出版日期</td>
               <td class="value">{{ meta.pubdate | time }}</td>
             </tr>
             <tr class="item">
               <td class="key">出版社</td>
-              <td class="value">{{ meta.pubtrsher }}</td>
+              <!-- <td class="value">{{ meta.pubtrsher }}</td> -->
+              <td class="value">南开大学</td>
             </tr>
-            <tr class="item">
+            <!-- <tr class="item">
               <td class="key">版权</td>
               <td class="value">{{ meta.rights }}</td>
+            </tr> -->
+            <tr class="item">
+              <td class="key">上次阅读</td>
+              <td class="value">{{ new Date() }}</td>
             </tr>
           </table>
         </ui-article>
@@ -358,7 +355,7 @@
         />
       </ui-appbar>
       <div class="search-body">
-        <ui-text-field v-model="keyword" />
+        <ui-text-field v-model="keyword" @keyup.enter.native="search" />
         <ui-icon-button icon="search" title="全文搜索" @click="search" />
         <div v-if="results">
           <div v-if="!results.length">搜索不到结果</div>
@@ -992,7 +989,7 @@ export default {
         this.setStyle();
         // this.book.goto('epubcfi(/6/6[id71]!/4[0-622b49af2d5d40458b0c96129dcf4ccb]/2/2[calibre_pb_0]/1:0)')
       });
-      console.log(this.bookId)
+      console.log(this.bookId);
       this.$axios
         .get(this.GLOBAL.host + "/pullProgress", {
           params: {

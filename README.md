@@ -13,8 +13,12 @@ npm install
 # serve with hot reload at localhost:8080
 npm run dev
 
+config\index.js 改为 assetsPublicPath: '/',
+
 # build for production with minification
 npm run build
+
+config\index.js 改为 assetsPublicPath: './',
 
 # build for production and view the bundle analyzer report
 npm run build --report
