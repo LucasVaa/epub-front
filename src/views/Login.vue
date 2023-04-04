@@ -185,6 +185,7 @@ export default {
         if (valid) {
           this.loading = true;
           this.$storage.set("user/login", this.loginForm);
+          sessionStorage.setItem('isLogin', true)
           this.$router.push({
             path: this.redirect || "/book",
             query: this.otherQuery
