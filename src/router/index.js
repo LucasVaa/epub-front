@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
+const Login = resolve => require(['@/views/Login'], resolve)
 const Book = resolve => require(['@/views/Book'], resolve)
 const Reader = resolve => require(['@/views/Reader'], resolve)
 const Editor = resolve => require(['@/views/Editor'], resolve)
@@ -11,6 +12,10 @@ Vue.use(Router)
 let routes = [
     {
         path: '/',
+        component: Login
+    },
+    {
+        path: '/book',
         component: Book
     },
     {
